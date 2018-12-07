@@ -1,4 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G4015" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Eleves" representedClassName="Eleves" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateNaissance" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="prenom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mere" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meres" inverseName="enfant" inverseEntity="Meres" syncable="YES"/>
+        <relationship name="pere" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Peres" inverseName="enfant" inverseEntity="Peres" syncable="YES"/>
+        <relationship name="resultat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resultats" inverseName="eleve" inverseEntity="Resultats" syncable="YES"/>
+    </entity>
+    <entity name="Matieres" representedClassName="Matieres" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="resultat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resultats" inverseName="resultat" inverseEntity="Resultats" syncable="YES"/>
+    </entity>
+    <entity name="Meres" representedClassName="Meres" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prenom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephoneFixe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephoneMobile" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="enfant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Eleves" inverseName="mere" inverseEntity="Eleves" syncable="YES"/>
+    </entity>
+    <entity name="Peres" representedClassName="Peres" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prenom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephoneFixe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephoneMobile" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="enfant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Eleves" inverseName="pere" inverseEntity="Eleves" syncable="YES"/>
+    </entity>
+    <entity name="Resultats" representedClassName="Resultats" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateControle" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="eleve" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Eleves" inverseName="resultat" inverseEntity="Eleves" syncable="YES"/>
+        <relationship name="resultat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Matieres" inverseName="resultat" inverseEntity="Matieres" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Eleves" positionX="-583.8671875" positionY="-166.6875" width="128" height="180"/>
+        <element name="Peres" positionX="-562.07421875" positionY="367.46484375" width="128" height="135"/>
+        <element name="Meres" positionX="-570.5390625" positionY="-454.6015625" width="128" height="135"/>
+        <element name="Resultats" positionX="-4.48828125" positionY="-670.41796875" width="128" height="120"/>
+        <element name="Matieres" positionX="383.41796875" positionY="-64.2890625" width="128" height="90"/>
+    </elements>
 </model>
